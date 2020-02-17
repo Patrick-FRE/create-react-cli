@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "publish-cli": "npm version patch -m 'update' && npm publish --access=public"
+    "publish-cli": "npm version patch -m 'update' && npm publish --access=public && git push"
   },
   "author": "",
   "bin": {
