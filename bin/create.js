@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 var cloneOrPull = require("git-clone-or-pull");
+var path = require("path");
 
 function createReactApp(arg) {
   if (arg.length !== 3) {
