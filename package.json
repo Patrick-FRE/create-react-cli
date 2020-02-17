@@ -12,6 +12,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "git-clone-or-pull": "^4.0.0",
     "shelljs": "^0.8.3"
   }
 }
