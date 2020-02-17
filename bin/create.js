@@ -18,3 +18,5 @@ function createReactApp(arg) {
     }
   );
 }
+
+createReactApp(process.argv);
