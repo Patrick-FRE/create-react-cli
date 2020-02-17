@@ -10,5 +10,8 @@
   "bin": {
     "create-react-cli": "bin/create.js"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "shelljs": "^0.8.3"
+  }
 }
