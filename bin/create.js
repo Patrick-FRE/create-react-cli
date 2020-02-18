@@ -1,23 +1,65 @@
 #! /usr/bin/env node
+var arg = require("arg");
+var inquirer = require("inquirer");
+var { createProject } = require("../src/index");
 
-var cloneOrPull = require("git-clone-or-pull");
-var path = require("path");
+cli(process.argv);
 
-function createReactApp(arg) {
-  if (arg.length !== 3) {
-    console.log("Invalid syntax");
-    return;
-  }
-
-  const folderName = arg[2];
-  cloneOrPull(
-    "https://github.com/Patrick-FRE/react-poilerplate.git",
-    path.join(process.cwd(), folderName),
-    () => {
-      console.log("clone successfully");
-      console.log(process.cwd());
-    }
-  );
+async function cli(args) {
+  let options = parseArgemuntsIntoOptions(args);
+  options = await promptForMissingOptions(options);
+  await createProject(options);
 }
 
-createReactApp(process.argv);
+function parseArgemuntsIntoOptions(rawArgs) {
+  const args = arg(
+    {
+      "--yes": Boolean,
+      "--install": Boolean
+    },
+    {
+      argv: rawArgs.slice(2)
+    }
+  );
+
+  return {
+    skipPrompts: args["--yes"] || false,
+    folderName: args._[0],
+    runInstall: args["--install"] || false
+  };
+}
+async function promptForMissingOptions(options) {
+  const defautFolderName = "create-react-project";
+
+  if (options.skipPrompts) {
+    return {
+      ...options,
+      folderName: defautFolderName
+    };
+  }
+
+  const questions = [];
+  if (!options.folderName) {
+    questions.push({
+      type: "input",
+      name: "folderName",
+      message: "Please enter the folderName",
+      default: defautFolderName
+    });
+  }
+  if (!options.runInstall) {
+    questions.push({
+      type: "confirm",
+      name: "runInstall",
+      message: "Do you want to install packages",
+      default: true
+    });
+  }
+
+  const answer = await inquirer.prompt(questions);
+  return {
+    ...options,
+    folderName: options.folderName || answer.folderName,
+    runInstall: options.runInstall || answer.runInstall
+  };
+}

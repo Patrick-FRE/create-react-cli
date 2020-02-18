@@ -1,19 +1,35 @@
 {
   "name": "@antra/create-react-cli",
   "version": "1.0.6",
-  "description": "",
-  "main": "index.js",
+  "description": "A CLI to bootstrap React projects",
+  "main": "src/index.js",
   "scripts": {
+    "clone-repo": "node src/scripts/clone.js",
     "publish-cli": "npm version patch -m 'update' && npm publish --access=public && git push"
   },
-  "author": "",
   "bin": {
+    "@antra/create-react-cli": "bin/create.js",
     "create-react-cli": "bin/create.js"
   },
-  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
+  "license": "MIT",
+  "author": "Patrick.lin",
   "dependencies": {
+    "arg": "^4.1.3",
+    "chalk": "^3.0.0",
+    "esm": "^3.2.25",
     "git-clone-or-pull": "^4.0.0",
+    "inquirer": "^7.0.4",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
     "path": "^0.12.7",
+    "pkg-install": "^1.0.0",
     "shelljs": "^0.8.3"
   }
 }
