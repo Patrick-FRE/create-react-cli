@@ -1,6 +1,6 @@
 {
   "name": "@antra/create-react-cli",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A CLI to bootstrap React projects",
   "main": "src/index.js",
   "scripts": {
