@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 var arg = require("arg");
 var inquirer = require("inquirer");
-var { createProject } = require("../src/index");
+// { createProject } = require("../src/index");
 
 cli(process.argv);
 
