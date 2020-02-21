@@ -24,12 +24,12 @@ async function createProject(options) {
     repoDirectory: repoDirectory
   };
 
-  try {
-    access(options.repoDirectory, fs.R_OK);
-  } catch (error) {
-    console.error("$s Invalid folder name", chalk.red.bold("ERROR"));
-    process.exit(1);
-  }
+  // try {
+  //   access(options.repoDirectory, fs.R_OK);
+  // } catch (error) {
+  //   console.error("$s Invalid folder name", chalk.red.bold("ERROR"));
+  //   process.exit(1);
+  // }
 
   const tasks = new Listr([
     { title: "Copy project files", task: () => copyRepoFiles(options) },
