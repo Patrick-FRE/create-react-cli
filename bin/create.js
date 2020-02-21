@@ -6,9 +6,10 @@ var { createProject } = require("../src/index");
 cli(process.argv);
 
 async function cli(args) {
-  let options = parseArgemuntsIntoOptions(args);
-  options = await promptForMissingOptions(options);
-  await createProject(options);
+  console.log("cli is working");
+  // let options = parseArgemuntsIntoOptions(args);
+  // options = await promptForMissingOptions(options);
+  // await createProject(options);
 }
 
 function parseArgemuntsIntoOptions(rawArgs) {
